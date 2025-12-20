@@ -3,6 +3,7 @@ backend:
   name: github
   repo: SebasAren/raapisdingman
   branch: main
+  base_url: https://sveltia-cms-auth.sebastiaan-fe5.workers.dev
 media_folder: "src/assets/images" # Location where files will be stored in the repo
 public_folder: "src/assets/images" # The src attribute for uploaded media
 collections:
