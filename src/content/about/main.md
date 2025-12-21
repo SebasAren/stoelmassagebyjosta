@@ -1,6 +1,6 @@
 ---
 professionalName: Josta Raapis-Dingman
-professionalPhoto: ""
+professionalPhoto: ''
 journeyTitle: My Journey to Massage Therapy
 journeyContent: My passion for massage therapy began over 15 years ago when I experienced firsthand the transformative power of therapeutic touch following a sports injury. The relief and healing I received inspired me to pursue a career where I could help others experience similar benefits.
 philosophyTitle: My Philosophy
@@ -16,17 +16,18 @@ philosophyItems:
 educationItems:
   - degree: Massage Therapy Diploma
     institution: Wellness Institute
-    year: "2008"
+    year: '2008'
   - degree: Advanced Anatomy & Physiology
     institution: Health Sciences College
-    year: "2010"
+    year: '2010'
   - degree: Bachelor of Science in Kinesiology
     institution: State University
-    year: "2006"
+    year: '2006'
 certificationItems:
   - certification: test
 membershipItems:
   - membership: test
+  - membership: test2
 specializationItems:
   - title: Chronic Pain Management
     description: Specialized techniques for long-term pain relief, including fibromyalgia, arthritis, and persistent muscle tension.
@@ -37,7 +38,6 @@ specializationItems:
   - title: Prenatal & Postpartum Care
     description: Safe, effective treatments for expectant and new mothers addressing pregnancy-related discomforts.
 ---
-
 # About Josta Raapis-Dingman
 
 Professional massage therapist dedicated to helping clients achieve optimal wellness through the healing power of therapeutic massage.
