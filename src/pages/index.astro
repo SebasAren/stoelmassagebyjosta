@@ -6,12 +6,38 @@ import ServiceCard from "../components/ServiceCard.astro";
 import Testimonial from "../components/Testimonial.astro";
 import BookingButton from "../components/BookingButton.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { getCollection } from "astro:content";
+
+const siteSettings = await getCollection("siteSettings");
+const siteData = siteSettings[0]?.data;
+
+const services = await getCollection(
+  "services",
+  (entry) => entry.data.featured,
+);
+const featuredServices = services
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const benefits = await getCollection("benefits");
+const sortedBenefits = benefits.sort((a, b) => a.data.order - b.data.order);
+
+const testimonials = await getCollection(
+  "testimonials",
+  (entry) => entry.data.featured,
+);
+const featuredTestimonials = testimonials
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead
+      title={siteData?.siteTitle || SITE_TITLE}
+      description={siteData?.siteDescription || SITE_DESCRIPTION}
+    />
   </head>
   <body>
     <Header />
@@ -19,11 +45,12 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
       <!-- Hero Section -->
       <section class="hero">
         <div class="container">
-          <h1>Relax, Rejuvenate, Restore</h1>
+          <h1>{siteData?.heroHeadline || "Relax, Rejuvenate, Restore"}</h1>
           <p>
-            Experience the healing power of professional massage therapy with
-            personalized treatments designed to melt away stress and restore
-            balance to your body and mind.
+            {
+              siteData?.heroDescription ||
+                "Experience the healing power of professional massage therapy with personalized treatments designed to melt away stress and restore balance to your body and mind."
+            }
           </p>
           <div class="hero-buttons">
             <BookingButton text="Book Your Session" size="large" />
@@ -43,25 +70,17 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
             </p>
           </div>
           <div class="grid grid-3">
-            <ServiceCard
-              title="Swedish Massage"
-              description="A gentle, relaxing massage that uses long strokes to improve circulation and promote overall relaxation."
-              duration="60/90 min"
-              price="$80/$120"
-              featured={true}
-            />
-            <ServiceCard
-              title="Deep Tissue Massage"
-              description="Targeted pressure to release chronic muscle tension and alleviate deep-seated muscle pain."
-              duration="60/90 min"
-              price="$90/$130"
-            />
-            <ServiceCard
-              title="Hot Stone Therapy"
-              description="Smooth, heated stones are used to warm and relax tight muscles, allowing for deeper work."
-              duration="75/90 min"
-              price="$100/$140"
-            />
+            {
+              featuredServices.map((service) => (
+                <ServiceCard
+                  title={service.data.title}
+                  description={service.data.description}
+                  duration={service.data.duration}
+                  price={service.data.price}
+                  featured={service.data.featured}
+                />
+              ))
+            }
           </div>
           <div class="text-center mt-3">
             <a href="/services" class="btn btn-secondary">View All Services</a>
@@ -80,34 +99,14 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
             </p>
           </div>
           <div class="grid grid-2">
-            <div class="benefit-item">
-              <h3>🌿 Stress Reduction</h3>
-              <p>
-                Lower cortisol levels and promote deep relaxation to combat
-                daily stressors.
-              </p>
-            </div>
-            <div class="benefit-item">
-              <h3>💪 Pain Relief</h3>
-              <p>
-                Alleviate chronic pain, muscle tension, and discomfort through
-                targeted techniques.
-              </p>
-            </div>
-            <div class="benefit-item">
-              <h3>🔄 Improved Circulation</h3>
-              <p>
-                Enhance blood flow to deliver oxygen and nutrients throughout
-                your body.
-              </p>
-            </div>
-            <div class="benefit-item">
-              <h3>😴 Better Sleep</h3>
-              <p>
-                Promote restful sleep and help regulate your body's natural
-                sleep cycles.
-              </p>
-            </div>
+            {
+              sortedBenefits.map((benefit) => (
+                <div class="benefit-item">
+                  <h3>{benefit.data.title}</h3>
+                  <p>{benefit.data.description}</p>
+                </div>
+              ))
+            }
           </div>
         </div>
       </section>
@@ -123,24 +122,16 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
             </p>
           </div>
           <div class="grid grid-3">
-            <Testimonial
-              name="Sarah Johnson"
-              text="I've been coming to Josta for over a year now, and the difference in my chronic back pain has been remarkable. Her deep tissue technique is exactly what I needed."
-              service="Deep Tissue Massage"
-              date="2 weeks ago"
-            />
-            <Testimonial
-              name="Michael Chen"
-              text="The hot stone therapy was incredible! I felt completely relaxed and the warmth really helped with my shoulder tension. Highly recommend!"
-              service="Hot Stone Therapy"
-              date="1 month ago"
-            />
-            <Testimonial
-              name="Emily Rodriguez"
-              text="As someone who works at a desk all day, the Swedish massage sessions have been a game-changer for my posture and overall well-being."
-              service="Swedish Massage"
-              date="3 weeks ago"
-            />
+            {
+              featuredTestimonials.map((testimonial) => (
+                <Testimonial
+                  name={testimonial.data.name}
+                  text={testimonial.data.text}
+                  service={testimonial.data.service}
+                  date={testimonial.data.date}
+                />
+              ))
+            }
           </div>
         </div>
       </section>

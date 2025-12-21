@@ -1,49 +1,81 @@
 ---
+import { getCollection } from "astro:content";
 const today = new Date();
+
+const siteSettings = await getCollection("siteSettings");
+const siteData = siteSettings[0]?.data;
+
+const navigation = await getCollection(
+  "navigation",
+  (entry) => entry.data.order,
+);
+const sortedNavigation = navigation.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <footer>
   <div class="container">
     <div class="footer-content">
       <div class="footer-section">
-        <h3>Josta Raapis-Dingman Massages</h3>
+        <h3>{siteData?.businessName || "Josta Raapis-Dingman Massages"}</h3>
         <p>
-          Professional massage therapy services to help you relax, rejuvenate,
-          and restore balance to your body and mind.
+          {
+            siteData?.tagline ||
+              "Professional massage therapy services to help you relax, rejuvenate, and restore balance to your body and mind."
+          }
         </p>
       </div>
 
       <div class="footer-section">
         <h4>Contact Info</h4>
-        <p><strong>Phone:</strong> (555) 123-4567</p>
-        <p><strong>Email:</strong> info@jostamassage.com</p>
+        <p><strong>Phone:</strong> {siteData?.phone || "(555) 123-4567"}</p>
         <p>
-          <strong>Address:</strong> 123 Wellness Street<br />Relaxation City, RC
-          12345
+          <strong>Email:</strong>
+          {siteData?.email || "info@jostamassage.com"}
+        </p>
+        <p>
+          <strong>Address:</strong>
+          {
+            siteData?.address?.replace(/, /g, "<br />") ||
+              "123 Wellness Street<br />Relaxation City, RC 12345"
+          }
         </p>
       </div>
 
       <div class="footer-section">
         <h4>Business Hours</h4>
-        <p><strong>Monday - Friday:</strong> 9:00 AM - 7:00 PM</p>
-        <p><strong>Saturday:</strong> 9:00 AM - 5:00 PM</p>
-        <p><strong>Sunday:</strong> 10:00 AM - 4:00 PM</p>
+        <p>
+          <strong>Monday - Friday:</strong>
+          {siteData?.weekdaysHours || "9:00 AM - 7:00 PM"}
+        </p>
+        <p>
+          <strong>Saturday:</strong>
+          {siteData?.saturdayHours || "9:00 AM - 5:00 PM"}
+        </p>
+        <p>
+          <strong>Sunday:</strong>
+          {siteData?.sundayHours || "10:00 AM - 4:00 PM"}
+        </p>
       </div>
 
       <div class="footer-section">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/services">Services</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Book Appointment</a></li>
+          {
+            sortedNavigation.map((item) => (
+              <li>
+                <a href={item.data.url}>{item.data.label}</a>
+              </li>
+            ))
+          }
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
       <p>
-        &copy; {today.getFullYear()} Josta Raapis-Dingman Massages. All rights reserved.
+        &copy; {today.getFullYear()}
+        {siteData?.businessName || "Josta Raapis-Dingman Massages"}. All rights
+        reserved.
       </p>
     </div>
   </div>

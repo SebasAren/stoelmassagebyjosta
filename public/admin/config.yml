@@ -1,4 +1,4 @@
-local_backend: true
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
 backend:
   name: github
   repo: SebasAren/raapisdingman
@@ -7,14 +7,176 @@ backend:
 media_folder: "src/assets/images" # Location where files will be stored in the repo
 public_folder: "src/assets/images" # The src attribute for uploaded media
 collections:
-  - name: "blog" # Used in routes, e.g., /admin/collections/blog
-    label: "Blog" # Used in the UI
-    folder: "src/content/blog" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    fields: # The fields for each document, usually in frontmatter
-      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+  - name: "siteSettings"
+    label: "Site Settings"
+    folder: "src/content/site-settings"
+    create: false
+    fields:
+      - { label: "Site Title", name: "siteTitle", widget: "string" }
+      - { label: "Site Description", name: "siteDescription", widget: "text" }
+      - { label: "Business Name", name: "businessName", widget: "string" }
+      - { label: "Tagline", name: "tagline", widget: "string" }
+      - { label: "Hero Headline", name: "heroHeadline", widget: "string" }
+      - { label: "Hero Description", name: "heroDescription", widget: "text" }
+      - {
+          label: "Hero Image",
+          name: "heroImage",
+          widget: "image",
+          required: false,
+        }
+      - { label: "Phone", name: "phone", widget: "string" }
+      - { label: "Email", name: "email", widget: "string" }
+      - { label: "Address", name: "address", widget: "text" }
+      - { label: "Website", name: "website", widget: "string" }
+      - { label: "Weekdays Hours", name: "weekdaysHours", widget: "string" }
+      - { label: "Saturday Hours", name: "saturdayHours", widget: "string" }
+      - { label: "Sunday Hours", name: "sundayHours", widget: "string" }
+      - {
+          label: "Last Appointment Note",
+          name: "lastAppointmentNote",
+          widget: "text",
+          required: false,
+        }
+      - {
+          label: "Emergency Note",
+          name: "emergencyNote",
+          widget: "text",
+          required: false,
+        }
+
+  - name: "services"
+    label: "Services"
+    folder: "src/content/services"
+    create: true
+    fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Featured Image", name: "thumbnail", widget: "image" }
-      - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Duration", name: "duration", widget: "string" }
+      - { label: "Price", name: "price", widget: "string" }
+      - {
+          label: "Featured",
+          name: "featured",
+          widget: "boolean",
+          default: false,
+        }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Order", name: "order", widget: "number", default: 0 }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "src/content/testimonials"
+    create: true
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Testimonial", name: "text", widget: "text" }
+      - { label: "Service", name: "service", widget: "string" }
+      - { label: "Date", name: "date", widget: "string" }
+      - {
+          label: "Rating",
+          name: "rating",
+          widget: "number",
+          min: 1,
+          max: 5,
+          default: 5,
+        }
+      - {
+          label: "Featured",
+          name: "featured",
+          widget: "boolean",
+          default: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "aboutContent"
+    label: "About Content"
+    folder: "src/content/about"
+    create: false
+    fields:
+      - {
+          label: "Professional Name",
+          name: "professionalName",
+          widget: "string",
+        }
+      - {
+          label: "Professional Photo",
+          name: "professionalPhoto",
+          widget: "image",
+          required: false,
+        }
+      - { label: "Journey Title", name: "journeyTitle", widget: "string" }
+      - { label: "Journey Content", name: "journeyContent", widget: "markdown" }
+      - { label: "Philosophy Title", name: "philosophyTitle", widget: "string" }
+      - label: "Philosophy Items"
+        name: "philosophyItems"
+        widget: "list"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+      - label: "Education Items"
+        name: "educationItems"
+        widget: "list"
+        fields:
+          - { label: "Degree", name: "degree", widget: "string" }
+          - { label: "Institution", name: "institution", widget: "string" }
+          - { label: "Year", name: "year", widget: "string" }
+      - label: "Certification Items"
+        name: "certificationItems"
+        widget: "list"
+        fields:
+          - { label: "Certification", name: "certification", widget: "string" }
+      - label: "Membership Items"
+        name: "membershipItems"
+        widget: "list"
+        fields:
+          - { label: "Membership", name: "membership", widget: "string" }
+      - label: "Specialization Items"
+        name: "specializationItems"
+        widget: "list"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "benefits"
+    label: "Benefits"
+    folder: "src/content/benefits"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Icon", name: "icon", widget: "string" }
+      - { label: "Order", name: "order", widget: "number", default: 0 }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "faq"
+    label: "FAQ"
+    folder: "src/content/faq"
+    create: true
+    fields:
+      - { label: "Question", name: "question", widget: "string" }
+      - { label: "Answer", name: "answer", widget: "text" }
+      - {
+          label: "Category",
+          name: "category",
+          widget: "select",
+          options: ["general", "booking", "payment", "services"],
+        }
+      - { label: "Order", name: "order", widget: "number", default: 0 }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "navigation"
+    label: "Navigation"
+    folder: "src/content/navigation"
+    create: true
+    fields:
+      - { label: "Label", name: "label", widget: "string" }
+      - { label: "URL", name: "url", widget: "string" }
+      - {
+          label: "Is Button",
+          name: "isButton",
+          widget: "boolean",
+          default: false,
+        }
+      - { label: "Order", name: "order", widget: "number", default: 0 }
       - { label: "Body", name: "body", widget: "markdown" }

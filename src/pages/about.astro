@@ -4,14 +4,21 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import BookingButton from "../components/BookingButton.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { getCollection } from "astro:content";
+
+const siteSettings = await getCollection("siteSettings");
+const siteData = siteSettings[0]?.data;
+
+const aboutContent = await getCollection("aboutContent");
+const aboutData = aboutContent[0]?.data;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <BaseHead
-      title={`About - ${SITE_TITLE}`}
-      description={`${SITE_DESCRIPTION} - Learn about Josta Raapis-Dingman's professional background, qualifications, and approach to massage therapy.`}
+      title={`About - ${siteData?.siteTitle || SITE_TITLE}`}
+      description={`${siteData?.siteDescription || SITE_DESCRIPTION} - Learn about ${aboutData?.professionalName || "Josta Raapis-Dingman"}'s professional background, qualifications, and approach to massage therapy.`}
     />
   </head>
   <body>
@@ -20,7 +27,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
       <!-- Page Header -->
       <section class="page-header">
         <div class="container">
-          <h1>About Josta Raapis-Dingman</h1>
+          <h1>About {aboutData?.professionalName || "Josta Raapis-Dingman"}</h1>
           <p>
             Dedicated to helping clients achieve optimal wellness through the
             healing power of therapeutic massage
@@ -33,38 +40,33 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
         <div class="container">
           <div class="about-content">
             <div class="about-text">
-              <h2>My Journey to Massage Therapy</h2>
-              <p>
-                My passion for massage therapy began over 15 years ago when I
-                experienced firsthand the transformative power of therapeutic
-                touch following a sports injury. The relief and healing I
-                received inspired me to pursue a career where I could help
-                others experience similar benefits.
-              </p>
-
-              <p>
-                I believe that massage therapy is not just a luxury, but an
-                essential component of overall health and wellness. My approach
-                combines technical expertise with intuitive understanding of
-                each client's unique needs, creating personalized treatments
-                that address both physical discomfort and emotional stress.
-              </p>
-
-              <p>
-                Throughout my career, I've had the privilege of working with
-                diverse clients - from athletes seeking performance enhancement
-                to office workers dealing with chronic tension, and individuals
-                managing stress-related conditions. Each client has taught me
-                something new about the incredible capacity of the human body to
-                heal and restore balance when given the right support.
-              </p>
+              <h2>
+                {aboutData?.journeyTitle || "My Journey to Massage Therapy"}
+              </h2>
+              <p
+                set:html={aboutData?.journeyContent?.replace(
+                  /\n\n/g,
+                  "</p><p>",
+                ) ||
+                  "My passion for massage therapy began over 15 years ago when I experienced firsthand the transformative power of therapeutic touch following a sports injury. The relief and healing I received inspired me to pursue a career where I could help others experience similar benefits."}
+              />
             </div>
 
             <div class="about-image">
-              <div class="image-placeholder">
-                <h3>Professional Photo</h3>
-                <p>Your professional headshot would go here</p>
-              </div>
+              {
+                aboutData?.professionalPhoto ? (
+                  <img
+                    src={aboutData.professionalPhoto.src}
+                    alt={`Professional photo of ${aboutData.professionalName || "Josta Raapis-Dingman"}`}
+                    class="professional-photo"
+                  />
+                ) : (
+                  <div class="image-placeholder">
+                    <h3>Professional Photo</h3>
+                    <p>Your professional headshot would go here</p>
+                  </div>
+                )
+              }
             </div>
           </div>
         </div>
@@ -74,41 +76,33 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
       <section class="section">
         <div class="container">
           <div class="philosophy">
-            <h2>My Philosophy</h2>
+            <h2>{aboutData?.philosophyTitle || "My Philosophy"}</h2>
             <div class="philosophy-grid">
-              <div class="philosophy-item">
-                <h3>🌿 Holistic Approach</h3>
-                <p>
-                  I view each client as a whole person, considering physical,
-                  emotional, and lifestyle factors that contribute to their
-                  well-being. My treatments address not just symptoms, but
-                  underlying causes of discomfort.
-                </p>
-              </div>
-              <div class="philosophy-item">
-                <h3>🤝 Client-Centered Care</h3>
-                <p>
-                  Your comfort and goals are my priority. I take time to listen,
-                  understand your concerns, and adjust my techniques to ensure
-                  each session meets your specific needs.
-                </p>
-              </div>
-              <div class="philosophy-item">
-                <h3>📚 Continuous Learning</h3>
-                <p>
-                  The field of massage therapy is constantly evolving. I
-                  regularly pursue advanced training and stay current with
-                  research to provide the most effective treatments available.
-                </p>
-              </div>
-              <div class="philosophy-item">
-                <h3>💪 Empowerment</h3>
-                <p>
-                  I aim to empower you with knowledge about your body and
-                  self-care techniques that extend the benefits of our sessions
-                  beyond the treatment room.
-                </p>
-              </div>
+              {
+                aboutData?.philosophyItems?.map((item) => (
+                  <div class="philosophy-item">
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </div>
+                )) ||
+                  [
+                    {
+                      title: "🌿 Holistic Approach",
+                      description:
+                        "I view each client as a whole person, considering physical, emotional, and lifestyle factors that contribute to their well-being.",
+                    },
+                    {
+                      title: "🤝 Client-Centered Care",
+                      description:
+                        "Your comfort and goals are my priority. I take time to listen, understand your concerns, and adjust my techniques.",
+                    },
+                  ].map((item) => (
+                    <div class="philosophy-item">
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                    </div>
+                  ))
+              }
             </div>
           </div>
         </div>
@@ -123,50 +117,71 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
               <div class="qualification-group">
                 <h3>Education</h3>
                 <ul>
-                  <li>
-                    <strong>Massage Therapy Diploma</strong> - Wellness Institute
-                    (2008)
-                  </li>
-                  <li>
-                    <strong>Advanced Anatomy & Physiology</strong> - Health Sciences
-                    College (2010)
-                  </li>
-                  <li>
-                    <strong>Bachelor of Science in Kinesiology</strong> - State University
-                    (2006)
-                  </li>
+                  {
+                    aboutData?.educationItems?.map((item) => (
+                      <li>
+                        <strong>{item.degree}</strong> - {item.institution} (
+                        {item.year})
+                      </li>
+                    )) ||
+                      [
+                        {
+                          degree: "Massage Therapy Diploma",
+                          institution: "Wellness Institute",
+                          year: "2008",
+                        },
+                        {
+                          degree: "Advanced Anatomy & Physiology",
+                          institution: "Health Sciences College",
+                          year: "2010",
+                        },
+                      ].map((item) => (
+                        <li>
+                          <strong>{item.degree}</strong> - {item.institution} (
+                          {item.year})
+                        </li>
+                      ))
+                  }
                 </ul>
               </div>
               <div class="qualification-group">
                 <h3>Certifications</h3>
                 <ul>
-                  <li>
-                    <strong
-                      >Nationally Certified in Therapeutic Massage (NCTMB)</strong>
-                  </li>
-                  <li>
-                    <strong>Certified Myofascial Release Practitioner</strong>
-                  </li>
-                  <li><strong>Prenatal Massage Certification</strong></li>
-                  <li><strong>Sports Massage Specialist</strong></li>
-                  <li><strong>Craniosacral Therapy Level 1</strong></li>
+                  {
+                    aboutData?.certificationItems?.map((cert) => (
+                      <li>
+                        <strong>{cert.certification}</strong>
+                      </li>
+                    )) ||
+                      [
+                        "Nationally Certified in Therapeutic Massage (NCTMB)",
+                        "Certified Myofascial Release Practitioner",
+                      ].map((cert) => (
+                        <li>
+                          <strong>{cert}</strong>
+                        </li>
+                      ))
+                  }
                 </ul>
               </div>
               <div class="qualification-group">
                 <h3>Professional Memberships</h3>
                 <ul>
-                  <li>
-                    <strong>American Massage Therapy Association (AMTA)</strong>
-                  </li>
-                  <li>
-                    <strong
-                      >Associated Bodywork & Massage Professionals (ABMP)</strong>
-                  </li>
-                  <li>
-                    <strong
-                      >National Certification Board for Therapeutic Massage &
-                      Bodywork</strong>
-                  </li>
+                  {
+                    aboutData?.membershipItems?.map((membership) => (
+                      <li>
+                        <strong>{membership.membership}</strong>
+                      </li>
+                    )) ||
+                      [
+                        "American Massage Therapy Association (AMTA)",
+                        "Associated Bodywork & Massage Professionals (ABMP)",
+                      ].map((membership) => (
+                        <li>
+                          <strong>{membership}</strong>
+                        </li>
+                      ))
+                  }
                 </ul>
               </div>
             </div>
@@ -180,34 +195,31 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
           <div class="specializations">
             <h2>Areas of Specialization</h2>
             <div class="specializations-grid">
-              <div class="specialization-item">
-                <h3>Chronic Pain Management</h3>
-                <p>
-                  Specialized techniques for long-term pain relief, including
-                  fibromyalgia, arthritis, and persistent muscle tension.
-                </p>
-              </div>
-              <div class="specialization-item">
-                <h3>Stress & Anxiety Relief</h3>
-                <p>
-                  Gentle, calming approaches designed to reduce cortisol levels
-                  and promote deep relaxation and mental clarity.
-                </p>
-              </div>
-              <div class="specialization-item">
-                <h3>Injury Rehabilitation</h3>
-                <p>
-                  Targeted therapy to support recovery from sports injuries,
-                  accidents, and surgical procedures.
-                </p>
-              </div>
-              <div class="specialization-item">
-                <h3>Prenatal & Postpartum Care</h3>
-                <p>
-                  Safe, effective treatments for expectant and new mothers
-                  addressing pregnancy-related discomforts.
-                </p>
-              </div>
+              {
+                aboutData?.specializationItems?.map((item) => (
+                  <div class="specialization-item">
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </div>
+                )) ||
+                  [
+                    {
+                      title: "Chronic Pain Management",
+                      description:
+                        "Specialized techniques for long-term pain relief, including fibromyalgia, arthritis, and persistent muscle tension.",
+                    },
+                    {
+                      title: "Stress & Anxiety Relief",
+                      description:
+                        "Gentle, calming approaches designed to reduce cortisol levels and promote deep relaxation and mental clarity.",
+                    },
+                  ].map((item) => (
+                    <div class="specialization-item">
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                    </div>
+                  ))
+              }
             </div>
           </div>
         </div>
@@ -291,6 +303,13 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
   .image-placeholder h3 {
     margin-bottom: 0.5rem;
     color: var(--text);
+  }
+
+  .professional-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
   }
 
   .philosophy,

@@ -5,14 +5,21 @@ import Header from "../components/Header.astro";
 import ServiceCard from "../components/ServiceCard.astro";
 import BookingButton from "../components/BookingButton.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { getCollection } from "astro:content";
+
+const siteSettings = await getCollection("siteSettings");
+const siteData = siteSettings[0]?.data;
+
+const services = await getCollection("services");
+const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <BaseHead
-      title={`Services - ${SITE_TITLE}`}
-      description={`${SITE_DESCRIPTION} - Professional massage therapy services including Swedish, deep tissue, hot stone, and more.`}
+      title={`Services - ${siteData?.siteTitle || SITE_TITLE}`}
+      description={`${siteData?.siteDescription || SITE_DESCRIPTION} - Professional massage therapy services including Swedish, deep tissue, hot stone, and more.`}
     />
   </head>
   <body>
@@ -34,42 +41,17 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
       <section class="section section-light">
         <div class="container">
           <div class="grid grid-2">
-            <ServiceCard
-              title="Swedish Massage"
-              description="A gentle, relaxing massage that uses long, flowing strokes to improve circulation, reduce muscle tension, and promote overall relaxation. Perfect for stress relief and those new to massage therapy."
-              duration="60 minutes / 90 minutes"
-              price="$80 / $120"
-            />
-            <ServiceCard
-              title="Deep Tissue Massage"
-              description="Targeted therapy that focuses on realigning deeper layers of muscles and connective tissue. Ideal for chronic aches, pain, and contracted areas such as stiff neck and upper back, low back pain, leg muscle tightness, and sore shoulders."
-              duration="60 minutes / 90 minutes"
-              price="$90 / $130"
-            />
-            <ServiceCard
-              title="Hot Stone Therapy"
-              description="Smooth, heated basalt stones are placed on specific points on your body and used as massage tools. The warmth helps to relax muscles more deeply, allowing for more effective work and increased circulation."
-              duration="75 minutes / 90 minutes"
-              price="$100 / $140"
-            />
-            <ServiceCard
-              title="Sports Massage"
-              description="Designed for athletes and active individuals, this therapy focuses on areas of the body that are overused and stressed from repetitive movements. Helps prevent injuries and enhance performance."
-              duration="60 minutes / 90 minutes"
-              price="$95 / $135"
-            />
-            <ServiceCard
-              title="Pregnancy Massage"
-              description="A gentle, safe massage specifically designed for expectant mothers. Helps alleviate common pregnancy discomforts such as back pain, swelling, and fatigue while promoting relaxation and well-being."
-              duration="60 minutes"
-              price="$85"
-            />
-            <ServiceCard
-              title="Couples Massage"
-              description="Share a relaxing massage experience with your partner, friend, or family member. Two therapists work simultaneously in the same room, providing individualized treatments in a shared space."
-              duration="60 minutes / 90 minutes"
-              price="$160 / $240"
-            />
+            {
+              sortedServices.map((service) => (
+                <ServiceCard
+                  title={service.data.title}
+                  description={service.data.description}
+                  duration={service.data.duration}
+                  price={service.data.price}
+                  featured={service.data.featured}
+                />
+              ))
+            }
           </div>
         </div>
       </section>

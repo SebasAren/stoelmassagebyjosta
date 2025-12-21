@@ -4,14 +4,21 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import ContactForm from "../components/ContactForm.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { getCollection } from "astro:content";
+
+const siteSettings = await getCollection("siteSettings");
+const siteData = siteSettings[0]?.data;
+
+const faq = await getCollection("faq");
+const sortedFAQ = faq.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <BaseHead
-      title={`Contact & Booking - ${SITE_TITLE}`}
-      description={`${SITE_DESCRIPTION} - Book your massage therapy appointment online or contact us with questions.`}
+      title={`Contact & Booking - ${siteData?.siteTitle || SITE_TITLE}`}
+      description={`${siteData?.siteDescription || SITE_DESCRIPTION} - Book your massage therapy appointment online or contact us with questions.`}
     />
   </head>
   <body>
@@ -45,9 +52,15 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
               <div class="contact-item">
                 <h3>📍 Location</h3>
                 <p>
-                  <strong>Josta Raapis-Dingman Massages</strong><br />
-                  123 Wellness Street<br />
-                  Relaxation City, RC 12345<br /><br />
+                  <strong
+                    >{
+                      siteData?.businessName || "Josta Raapis-Dingman Massages"
+                    }</strong
+                  ><br />
+                  {
+                    siteData?.address?.replace(/, /g, "<br />") ||
+                      "123 Wellness Street<br />Relaxation City, RC 12345"
+                  }<br /><br />
                   Free parking available on-site<br />
                   Wheelchair accessible
                 </p>
@@ -56,9 +69,12 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
               <div class="contact-item">
                 <h3>📞 Contact Information</h3>
                 <p>
-                  <strong>Phone:</strong> (555) 123-4567<br />
-                  <strong>Email:</strong> info@jostamassage.com<br />
-                  <strong>Website:</strong> www.jostamassage.com<br /><br />
+                  <strong>Phone:</strong>
+                  {siteData?.phone || "(555) 123-4567"}<br />
+                  <strong>Email:</strong>
+                  {siteData?.email || "info@jostamassage.com"}<br />
+                  <strong>Website:</strong>
+                  {siteData?.website || "www.jostamassage.com"}<br /><br />
                   Feel free to call or email with any questions about our services
                   or to schedule your appointment.
                 </p>
@@ -67,11 +83,20 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
               <div class="contact-item">
                 <h3>🕐 Business Hours</h3>
                 <p>
-                  <strong>Monday - Friday:</strong> 9:00 AM - 7:00 PM<br />
-                  <strong>Saturday:</strong> 9:00 AM - 5:00 PM<br />
-                  <strong>Sunday:</strong> 10:00 AM - 4:00 PM<br /><br />
-                  Last appointment scheduled 30 minutes before closing<br />
-                  Emergency appointments may be available
+                  <strong>Monday - Friday:</strong>
+                  {siteData?.weekdaysHours || "9:00 AM - 7:00 PM"}<br />
+                  <strong>Saturday:</strong>
+                  {siteData?.saturdayHours || "9:00 AM - 5:00 PM"}<br />
+                  <strong>Sunday:</strong>
+                  {siteData?.sundayHours || "10:00 AM - 4:00 PM"}<br /><br />
+                  {
+                    siteData?.lastAppointmentNote ||
+                      "Last appointment scheduled 30 minutes before closing"
+                  }<br />
+                  {
+                    siteData?.emergencyNote ||
+                      "Emergency appointments may be available"
+                  }
                 </p>
               </div>
             </div>
@@ -116,66 +141,66 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
           <div class="faq-section">
             <h2>Frequently Asked Questions</h2>
             <div class="faq-grid">
-              <div class="faq-item">
-                <h3>What should I expect during my first visit?</h3>
-                <p>
-                  Your first appointment includes a brief consultation to
-                  discuss your health history and wellness goals. We'll review
-                  any areas of concern and create a personalized treatment plan
-                  tailored to your needs.
-                </p>
-              </div>
+              {
+                sortedFAQ.map((item) => (
+                  <div class="faq-item">
+                    <h3>{item.data.question}</h3>
+                    <p>{item.data.answer}</p>
+                  </div>
+                ))
+              }
+            </div>
 
-              <div class="faq-item">
-                <h3>How early should I arrive for my appointment?</h3>
-                <p>
-                  Please arrive 10-15 minutes early for your first appointment
-                  to complete necessary paperwork. For return visits, 5 minutes
-                  early is perfect to ensure a relaxed start to your session.
-                </p>
-              </div>
+            <div class="faq-item">
+              <h3>How early should I arrive for my appointment?</h3>
+              <p>
+                Please arrive 10-15 minutes early for your first appointment to
+                complete necessary paperwork. For return visits, 5 minutes early
+                is perfect to ensure a relaxed start to your session.
+              </p>
+            </div>
 
-              <div class="faq-item">
-                <h3>What should I wear during the massage?</h3>
-                <p>
-                  Your comfort is our priority. Most clients undress to their
-                  comfort level and are always draped with sheets throughout the
-                  session. You may wear underwear if you prefer.
-                </p>
-              </div>
+            <div class="faq-item">
+              <h3>What should I wear during the massage?</h3>
+              <p>
+                Your comfort is our priority. Most clients undress to their
+                comfort level and are always draped with sheets throughout the
+                session. You may wear underwear if you prefer.
+              </p>
+            </div>
 
-              <div class="faq-item">
-                <h3>Do you accept insurance?</h3>
-                <p>
-                  We don't directly bill insurance, but we can provide detailed
-                  receipts for you to submit to your insurance company for
-                  potential reimbursement. Check with your provider about
-                  coverage.
-                </p>
-              </div>
+            <div class="faq-item">
+              <h3>Do you accept insurance?</h3>
+              <p>
+                We don't directly bill insurance, but we can provide detailed
+                receipts for you to submit to your insurance company for
+                potential reimbursement. Check with your provider about
+                coverage.
+              </p>
+            </div>
 
-              <div class="faq-item">
-                <h3>What forms of payment do you accept?</h3>
-                <p>
-                  We accept cash, credit cards (Visa, Mastercard, American
-                  Express), and HSA/FSA cards. Payment is due at the time of
-                  service.
-                </p>
-              </div>
+            <div class="faq-item">
+              <h3>What forms of payment do you accept?</h3>
+              <p>
+                We accept cash, credit cards (Visa, Mastercard, American
+                Express), and HSA/FSA cards. Payment is due at the time of
+                service.
+              </p>
+            </div>
 
-              <div class="faq-item">
-                <h3>What if I need to cancel my appointment?</h3>
-                <p>
-                  We require 24-hour notice for cancellations to avoid a
-                  cancellation fee. Late cancellations may be subject to a
-                  charge equal to 50% of the scheduled service.
-                </p>
-              </div>
+            <div class="faq-item">
+              <h3>What if I need to cancel my appointment?</h3>
+              <p>
+                We require 24-hour notice for cancellations to avoid a
+                cancellation fee. Late cancellations may be subject to a charge
+                equal to 50% of the scheduled service.
+              </p>
             </div>
           </div>
         </div>
       </section>
     </main>
+
     <Footer />
   </body>
 </html>

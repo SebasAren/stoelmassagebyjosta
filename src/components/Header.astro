@@ -1,5 +1,12 @@
 ---
+import { getCollection } from "astro:content";
 import { SITE_TITLE } from "../consts";
+
+const navigation = await getCollection(
+  "navigation",
+  (entry) => entry.data.order,
+);
+navigation.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <header>
@@ -8,10 +15,18 @@ import { SITE_TITLE } from "../consts";
       <a href="/">{SITE_TITLE}</a>
     </div>
     <ul class="nav-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/services">Services</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/contact" class="btn btn-secondary">Book Now</a></li>
+      {
+        navigation.map((item) => (
+          <li>
+            <a
+              href={item.data.url}
+              class={item.data.isButton ? "btn btn-secondary" : ""}
+            >
+              {item.data.label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
     <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
       <span></span>
