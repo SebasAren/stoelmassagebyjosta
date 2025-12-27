@@ -4,3 +4,6 @@ age = "latest"
 node = "22"
 opencode = "latest"
 pnpm = "10.26.2"
+
+[env]
+NODE_ENV = "dev"
