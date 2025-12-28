@@ -1,8 +1,8 @@
 ---
 professionalName: Josta Raapis-Dingman
 professionalPhoto: ''
-journeyTitle: My Journey to Massage Therapy
-journeyContent: My passion for massage therapy began over 15 years ago when I experienced firsthand the transformative power of therapeutic touch following a sports injury. The relief and healing I received inspired me to pursue a career where I could help others experience similar benefits.
+journeyTitle: Massagetherapie
+journeyContent: Hier komt een uitgebreide tekst
 philosophyTitle: My Philosophy
 philosophyItems:
   - title: 🌿 Holistic Approach
