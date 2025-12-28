@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
 import BookingButton from "../components/BookingButton.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import { getCollection } from "astro:content";
@@ -24,16 +25,10 @@ const aboutData = aboutContent[0]?.data;
   <body>
     <Header />
     <main>
-      <!-- Page Header -->
-      <section class="page-header">
-        <div class="container">
-          <h1>Over {aboutData?.professionalName || "Josta Raapis-Dingman"}</h1>
-          <p>
-            Toegewijd aan het helpen van cliënten om optimale wellness te
-            bereiken door de helende kracht van therapeutische massage
-          </p>
-        </div>
-      </section>
+      <Hero
+        title={`Over ${aboutData?.professionalName || "Josta Raapis-Dingman"}`}
+        description="Toegewijd aan het helpen van cliënten om optimale wellness te bereiken door de helende kracht van therapeutische massage"
+      />
 
       <!-- About Content -->
       <section class="section section-light">
@@ -249,29 +244,6 @@ const aboutData = aboutContent[0]?.data;
 </html>
 
 <style>
-  .page-header {
-    background: linear-gradient(
-      135deg,
-      var(--secondary) 0%,
-      var(--primary) 100%
-    );
-    padding: 4rem 0;
-    text-align: center;
-  }
-
-  .page-header h1 {
-    color: var(--text);
-    margin-bottom: 1.5rem;
-  }
-
-  .page-header p {
-    font-size: 1.2rem;
-    color: var(--text-light);
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-
   .about-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -406,14 +378,6 @@ const aboutData = aboutContent[0]?.data;
   }
 
   @media (max-width: 768px) {
-    .page-header {
-      padding: 3rem 0;
-    }
-
-    .page-header p {
-      font-size: 1.1rem;
-    }
-
     .about-content {
       grid-template-columns: 1fr;
       gap: 2rem;
