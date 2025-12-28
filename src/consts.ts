@@ -1,7 +1,7 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = "Josta Raapis-Dingman Massages";
+export const SITE_TITLE = "Josta Raapis Dingman Massages";
 export const SITE_DESCRIPTION =
   "Professionele massagetherapie diensten die ontspanning, pijnverlichting en wellness bieden via Zweedse, deep tissue, hot stone en gespecialiseerde massagebehandelingen.";
 

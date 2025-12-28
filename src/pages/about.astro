@@ -19,14 +19,14 @@ const aboutData = aboutContent[0]?.data;
   <head>
     <BaseHead
       title={`Over - ${siteData?.siteTitle || SITE_TITLE}`}
-      description={`${siteData?.siteDescription || SITE_DESCRIPTION} - Leer meer over ${aboutData?.professionalName || "Josta Raapis-Dingman"}'s professionele achtergrond, kwalificaties en benadering van massagetherapie.`}
+      description={`${siteData?.siteDescription || SITE_DESCRIPTION} - Leer meer over ${aboutData?.professionalName || "Josta Raapis Dingman"}'s professionele achtergrond, kwalificaties en benadering van massagetherapie.`}
     />
   </head>
   <body>
     <Header />
     <main>
       <Hero
-        title={`Over ${aboutData?.professionalName || "Josta Raapis-Dingman"}`}
+        title={`Over ${aboutData?.professionalName || "Josta Raapis Dingman"}`}
         description="Toegewijd aan het helpen van cliënten om optimale wellness te bereiken door de helende kracht van therapeutische massage"
       />
 
@@ -52,7 +52,7 @@ const aboutData = aboutContent[0]?.data;
                 aboutData?.professionalPhoto ? (
                   <img
                     src={aboutData.professionalPhoto.src}
-                    alt={`Professionele foto van ${aboutData.professionalName || "Josta Raapis-Dingman"}`}
+                    alt={`Professionele foto van ${aboutData.professionalName || "Josta Raapis Dingman"}`}
                     class="professional-photo"
                   />
                 ) : (
@@ -137,11 +137,6 @@ const aboutData = aboutContent[0]?.data;
               {aboutData?.ctaDescription ||
                 "Ik ben toegewijd aan het bieden van uitzonderlijke zorg in een comfortabele, professionele omgeving. Laten we samenwerken om uw wellnessdoelen te bereiken."}
             </p>
-            <BookingButton
-              text={aboutData?.ctaButtonText || "Plan Uw Consultatie"}
-              size="large"
-              variant="secondary"
-            />
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 ---
-siteTitle: Josta Raapis-Dingman Massages
+siteTitle: Josta Raapis Dingman Massages
 siteDescription: Professionele stoelmassage voor effectieve verlichting van nek-, schouder- en rugklachten in slechts 15-30 minuten.
-businessName: Josta Raapis-Dingman Massages
+businessName: Josta Raapis Dingman Massages
 tagline: Stoelmassage voor bedrijven
 heroHeadline: Stoelmassages voor bedrijven
 heroDescription: Ervaar de helende kracht van professionele stoelmassage die specifiek gericht is op het verlichten van spanning in nek, schouders, rug en armen.
@@ -20,4 +20,4 @@ stoelmassagePracticalInfo: Een stoelmassage duurt doorgaans 15 tot 30 minuten en
 
 # Site Settings
 
-This file contains the main site configuration and business information for Josta Raapis-Dingman Massages.
+This file contains the main site configuration and business information for Josta Raapis Dingman Massages.
