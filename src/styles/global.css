@@ -4,11 +4,11 @@
 */
 
 :root {
-  --primary: #8fbc8f;
-  --primary-dark: #6fa86f;
-  --secondary: #fff8dc;
-  --accent: #008080;
-  --accent-dark: #006666;
+  --primary: #1e40af;
+  --primary-dark: #1e3a8a;
+  --secondary: #dbeafe;
+  --accent: #1d4ed8;
+  --accent-dark: #1e40af;
   --text: #333333;
   --text-light: #666666;
   --white: #ffffff;
@@ -315,7 +315,7 @@ hr {
 
 .hero {
   padding: 6em 0;
-  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--secondary) 0%, #93c5fd 100%);
   text-align: center;
   color: var(--text);
 }
@@ -329,7 +329,7 @@ hr {
 .hero p {
   font-size: 1.2em;
   margin-bottom: 2rem;
-  color: var(--text-light);
+  color: var(--text);
 }
 
 @media (max-width: 768px) {

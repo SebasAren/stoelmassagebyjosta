@@ -1,0 +1,57 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  buttons?: {
+    text: string;
+    href?: string;
+    variant?: "primary" | "secondary" | "outline";
+    size?: "small" | "medium" | "large";
+  }[];
+}
+
+const { title, description = "", buttons = [] } = Astro.props;
+---
+
+<section class="hero">
+  <div class="container">
+    <h1>{title}</h1>
+    {description && <p>{description}</p>}
+    {buttons.length > 0 && (
+      <div class="hero-buttons">
+        {buttons.map((button) => (
+          <a
+            href={button.href || "#"}
+            class={`btn ${button.variant === "outline" ? "btn-outline" : ""} ${
+              button.variant === "secondary" ? "btn-secondary" : ""
+            }`}
+          >
+            {button.text}
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-buttons .btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>

@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
 import ContactForm from "../components/ContactForm.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import { getCollection } from "astro:content";
@@ -17,31 +18,17 @@ const sortedFAQ = faq.sort((a, b) => a.data.order - b.data.order);
 <html lang="nl">
   <head>
     <BaseHead
-      title={`Contact & Boeking - ${siteData?.siteTitle || SITE_TITLE}`}
-      description={`${siteData?.siteDescription || SITE_DESCRIPTION} - Boek uw massagetherapie afspraak online of neem contact op met vragen.`}
+      title={`Contact - ${siteData?.siteTitle || SITE_TITLE}`}
+      description={`${siteData?.siteDescription || SITE_DESCRIPTION} - Neem contact op met vragen.`}
     />
   </head>
   <body>
     <Header />
     <main>
-      <!-- Page Header -->
-      <section class="page-header">
-        <div class="container">
-          <h1>Boek Uw Afspraak</h1>
-          <p>
-            Klaar om de helende voordelen van professionele massage therapie te
-            ervaren? Plan vandaag uw sessie en zet de eerste stap naar
-            ontspanning en wellness.
-          </p>
-        </div>
-      </section>
-
-      <!-- Booking Form Section -->
-      <section class="section section-light">
-        <div class="container">
-          <ContactForm />
-        </div>
-      </section>
+      <Hero
+        title="Contact"
+        description="Neem contact op met vragen."
+      />
 
       <!-- Contact Information -->
       <section class="section">
@@ -211,29 +198,6 @@ const sortedFAQ = faq.sort((a, b) => a.data.order - b.data.order);
 </html>
 
 <style>
-  .page-header {
-    background: linear-gradient(
-      135deg,
-      var(--secondary) 0%,
-      var(--primary) 100%
-    );
-    padding: 4rem 0;
-    text-align: center;
-  }
-
-  .page-header h1 {
-    color: var(--text);
-    margin-bottom: 1.5rem;
-  }
-
-  .page-header p {
-    font-size: 1.2rem;
-    color: var(--text-light);
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-
   .contact-info {
     text-align: center;
     max-width: 1000px;
@@ -353,14 +317,6 @@ const sortedFAQ = faq.sort((a, b) => a.data.order - b.data.order);
   }
 
   @media (max-width: 768px) {
-    .page-header {
-      padding: 3rem 0;
-    }
-
-    .page-header p {
-      font-size: 1.1rem;
-    }
-
     .contact-grid,
     .faq-grid {
       grid-template-columns: 1fr;
