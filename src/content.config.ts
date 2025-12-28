@@ -87,6 +87,9 @@ const aboutContent = defineCollection({
           description: z.string(),
         }),
       ),
+      ctaTitle: z.string().optional(),
+      ctaDescription: z.string().optional(),
+      ctaButtonText: z.string().optional(),
       professionalPhoto: image().optional(),
     }),
 });

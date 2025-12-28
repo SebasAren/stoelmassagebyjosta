@@ -148,6 +148,24 @@ collections:
         fields:
           - { label: "Titel", name: "title", widget: "string" }
           - { label: "Beschrijving", name: "description", widget: "text" }
+      - {
+          label: "CTA Titel",
+          name: "ctaTitle",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "CTA Beschrijving",
+          name: "ctaDescription",
+          widget: "text",
+          required: false,
+        }
+      - {
+          label: "CTA Knop Tekst",
+          name: "ctaButtonText",
+          widget: "string",
+          required: false,
+        }
       - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "benefits"
