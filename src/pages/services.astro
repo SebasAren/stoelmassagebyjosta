@@ -27,23 +27,37 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
     <Header />
     <main>
       <Hero
-        title="Onze Massagebehandelingen"
-        description="Ontdek ons assortiment professionele massagetherapieën ontworpen om uw specifieke wellnessbehoeften aan te pakken en u te helpen optimale gezondheid en ontspanning te bereiken."
+        title="Stoelmassage"
+        description="Effectieve verlichting van nek-, schouder- en rugklachten in slechts 15-30 minuten. Perfect voor mensen met een zittend beroep."
       />
 
-      <!-- Services Grid -->
+      <!-- Service Detail -->
       <section class="section section-light">
         <div class="container">
-          <div class="grid grid-2">
+          <div class="service-detail">
             {
               sortedServices.map((service) => (
-                <ServiceCard
-                  title={service.data.title}
-                  description={service.data.description}
-                  duration={service.data.duration}
-                  price={service.data.price}
-                  featured={service.data.featured}
-                />
+                <>
+                  <h2 class="service-title">{service.data.title}</h2>
+                  <p class="service-description">{service.data.description}</p>
+                  <div class="service-pricing">
+                    <h3>Duur en Prijzen</h3>
+                    <div class="pricing-options">
+                      <div class="pricing-option">
+                        <span class="duration">15 minuten</span>
+                        <span class="price">€20</span>
+                      </div>
+                      <div class="pricing-option">
+                        <span class="duration">20 minuten</span>
+                        <span class="price">€25</span>
+                      </div>
+                      <div class="pricing-option">
+                        <span class="duration">30 minuten</span>
+                        <span class="price">€35</span>
+                      </div>
+                    </div>
+                  </div>
+                </>
               ))
             }
           </div>

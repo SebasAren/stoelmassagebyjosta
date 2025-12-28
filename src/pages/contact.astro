@@ -18,24 +18,17 @@ const sortedFAQ = faq.sort((a, b) => a.data.order - b.data.order);
 <html lang="nl">
   <head>
     <BaseHead
-      title={`Contact & Boeking - ${siteData?.siteTitle || SITE_TITLE}`}
-      description={`${siteData?.siteDescription || SITE_DESCRIPTION} - Boek uw massagetherapie afspraak online of neem contact op met vragen.`}
+      title={`Contact - ${siteData?.siteTitle || SITE_TITLE}`}
+      description={`${siteData?.siteDescription || SITE_DESCRIPTION} - Neem contact op met vragen.`}
     />
   </head>
   <body>
     <Header />
     <main>
       <Hero
-        title="Boek Uw Afspraak"
-        description="Klaar om de helende voordelen van professionele massage therapie te ervaren? Plan vandaag uw sessie en zet de eerste stap naar ontspanning en wellness."
+        title="Contact"
+        description="Neem contact op met vragen."
       />
-
-      <!-- Booking Form Section -->
-      <section class="section section-light">
-        <div class="container">
-          <ContactForm />
-        </div>
-      </section>
 
       <!-- Contact Information -->
       <section class="section">
