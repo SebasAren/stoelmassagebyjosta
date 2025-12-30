@@ -10,6 +10,12 @@ import { getCollection } from "astro:content";
 const siteSettings = await getCollection("siteSettings");
 const siteData = siteSettings[0]?.data;
 
+const heroContent = await getCollection("heroContent");
+const heroData = heroContent[0]?.data;
+
+const stoelmassageContent = await getCollection("stoelmassageContent");
+const stoelmassageData = stoelmassageContent[0]?.data;
+
 const benefits = await getCollection("benefits");
 const sortedBenefits = benefits.sort((a, b) => a.data.order - b.data.order);
 
@@ -34,9 +40,9 @@ const featuredTestimonials = testimonials
     <Header />
     <main>
       <Hero
-        title={siteData?.heroHeadline || "Ontspannen, Verjongen, Herstellen"}
+        title={heroData?.headline || "Ontspannen, Verjongen, Herstellen"}
         description={
-          siteData?.heroDescription ||
+          heroData?.description ||
             "Ervaar de helende kracht van professionele massagetherapie met gepersonaliseerde behandelingen die ontworpen zijn om stress weg te smelten en het evenwicht in lichaam en geest te herstellen."
         }
       />
@@ -45,9 +51,9 @@ const featuredTestimonials = testimonials
       <section class="section section-light">
         <div class="container">
           <div class="text-center mb-4">
-            <h2>{siteData?.stoelmassageTitle || "Stoelmassage"}</h2>
+            <h2>{stoelmassageData?.title || "Stoelmassage"}</h2>
             <p>
-              {siteData?.stoelmassageDescription ||
+              {stoelmassageData?.description ||
                 "Ontdek de voordelen van een professionele stoelmassage op locatie"}
             </p>
           </div>
@@ -55,17 +61,17 @@ const featuredTestimonials = testimonials
             <div class="service-content">
               <h3>Wat is Stoelmassage?</h3>
               <p>
-                {siteData?.stoelmassageWhatIs ||
+                {stoelmassageData?.whatIs ||
                   "Stoelmassage is een korte, effectieve massagevorm die speciaal is ontwikkeld voor op de werkplek. De massage wordt uitgevoerd op een speciaal ergonomische stoel en richt zich op de rug, schouders, nek en armen - de plekken waar veel stress zich ophoopt."}
               </p>
 
               <h3>Voordelen</h3>
-              <p set:html={siteData?.stoelmassageBenefits?.replace(/\n/g, "<br />") ||
+              <p set:html={stoelmassageData?.benefits?.replace(/\n/g, "<br />") ||
                 "Verlichting van nek- en rugklachten<br />Vermindering van stress en spanning<br />Beter doorbloeding<br />Verhoogde productiviteit en concentratie<br />Preventie van RSI-klachten"} />
 
               <h3>Praktische Informatie</h3>
               <p>
-                {siteData?.stoelmassagePracticalInfo ||
+                {stoelmassageData?.practicalInfo ||
                   "Een stoelmassage duurt doorgaans 15 tot 30 minuten en wordt uitgevoerd op uw werkplek. De massage vindt plaats door de kleding heen, waardoor er geen omkleedtijd nodig is. Ideaal voor bedrijven die hun medewerkers willen belonen met een moment van ontspanning."}
               </p>
             </div>

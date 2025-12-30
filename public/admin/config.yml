@@ -4,11 +4,12 @@ backend:
   repo: SebasAren/raapisdingman
   branch: main
   base_url: https://sveltia-cms-auth.sebastiaan-fe5.workers.dev
-media_folder: "src/assets/images" # Location where files will be stored in the repo
-public_folder: "src/assets/images" # The src attribute for uploaded media
+media_folder: "src/assets/images"
+public_folder: "src/assets/images"
 collections:
   - name: "siteSettings"
-    label: "Site Instellingen"
+    label: "Website"
+    description: "Basis website instellingen en algemene informatie"
     folder: "src/content/site-settings"
     create: false
     fields:
@@ -16,23 +17,57 @@ collections:
       - { label: "Site Beschrijving", name: "siteDescription", widget: "text" }
       - { label: "Bedrijfsnaam", name: "businessName", widget: "string" }
       - { label: "Slogan", name: "tagline", widget: "string" }
-      - { label: "Hero Kop", name: "heroHeadline", widget: "string" }
-      - { label: "Hero Beschrijving", name: "heroDescription", widget: "text" }
       - {
-          label: "Hero Afbeelding",
-          name: "heroImage",
-          widget: "image",
-          required: false,
-        }
-      - { label: "Telefoon", name: "phone", widget: "string" }
-      - { label: "E-mail", name: "email", widget: "string" }
-      - { label: "Website", name: "website", widget: "string" }
-      - {
-          label: "LinkedIn",
+          label: "LinkedIn URL",
           name: "linkedin",
           widget: "string",
           required: false,
         }
+
+  - name: "heroContent"
+    label: "Hero Sectie"
+    description: "Instellingen voor de bovenste hero sectie op de homepage"
+    folder: "src/content/hero"
+    create: false
+    fields:
+      - { label: "Kop", name: "headline", widget: "string" }
+      - { label: "Beschrijving", name: "description", widget: "text" }
+      - {
+          label: "Hero Afbeelding",
+          name: "image",
+          widget: "image",
+          required: false,
+        }
+
+  - name: "stoelmassageContent"
+    label: "Stoelmassage Sectie"
+    description: "Inhoud voor de stoelmassage dienst sectie op de homepage"
+    folder: "src/content/stoelmassage"
+    create: false
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Beschrijving", name: "description", widget: "text" }
+      - {
+          label: "Wat is Stoelmassage? (Inhoud)",
+          name: "whatIs",
+          widget: "text",
+        }
+      - {
+          label: "Voordelen (Gebruik enter om te scheiden)",
+          name: "benefits",
+          widget: "text",
+        }
+      - { label: "Praktische Info", name: "practicalInfo", widget: "text" }
+
+  - name: "contactInfo"
+    label: "Contactgegevens"
+    description: "Contact informatie en notities"
+    folder: "src/content/contact"
+    create: false
+    fields:
+      - { label: "Telefoon", name: "phone", widget: "string" }
+      - { label: "E-mail", name: "email", widget: "string" }
+      - { label: "Website", name: "website", widget: "string" }
       - {
           label: "Laatste Afspraak Notitie",
           name: "lastAppointmentNote",
@@ -45,39 +80,10 @@ collections:
           widget: "text",
           required: false,
         }
-      - {
-          label: "Stoelmassage Titel",
-          name: "stoelmassageTitle",
-          widget: "string",
-          required: false,
-        }
-      - {
-          label: "Stoelmassage Beschrijving",
-          name: "stoelmassageDescription",
-          widget: "text",
-          required: false,
-        }
-      - {
-          label: "Stoelmassage Wat Is",
-          name: "stoelmassageWhatIs",
-          widget: "text",
-          required: false,
-        }
-      - {
-          label: "Stoelmassage Voordelen",
-          name: "stoelmassageBenefits",
-          widget: "text",
-          required: false,
-        }
-      - {
-          label: "Stoelmassage Praktische Info",
-          name: "stoelmassagePracticalInfo",
-          widget: "text",
-          required: false,
-        }
 
   - name: "testimonials"
     label: "Getuigenissen"
+    description: "Klant reviews en ervaringen"
     folder: "src/content/testimonials"
     create: true
     fields:
@@ -99,10 +105,11 @@ collections:
           widget: "boolean",
           default: false,
         }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Volgorde", name: "order", widget: "number", default: 0 }
 
   - name: "aboutContent"
-    label: "Over Content"
+    label: "Over Mij Pagina"
+    description: "Inhoud voor de over mij pagina"
     folder: "src/content/about"
     create: false
     fields:
@@ -118,7 +125,7 @@ collections:
           required: false,
         }
       - { label: "Reis Titel", name: "journeyTitle", widget: "string" }
-      - { label: "Reis Content", name: "journeyContent", widget: "markdown" }
+      - { label: "Reis Inhoud", name: "journeyContent", widget: "markdown" }
       - { label: "Filosofie Titel", name: "philosophyTitle", widget: "string" }
       - label: "Filosofie Items"
         name: "philosophyItems"
@@ -126,24 +133,24 @@ collections:
         fields:
           - { label: "Titel", name: "title", widget: "string" }
           - { label: "Beschrijving", name: "description", widget: "text" }
-      - label: "Opleiding Items"
+      - label: "Opleiding"
         name: "educationItems"
         widget: "list"
         fields:
           - { label: "Diploma", name: "degree", widget: "string" }
           - { label: "Instituut", name: "institution", widget: "string" }
           - { label: "Jaar", name: "year", widget: "string" }
-      - label: "Certificering Items"
+      - label: "Certificeringen"
         name: "certificationItems"
         widget: "list"
         fields:
           - { label: "Certificering", name: "certification", widget: "string" }
-      - label: "Lidmaatschap Items"
+      - label: "Lidmaatschappen"
         name: "membershipItems"
         widget: "list"
         fields:
           - { label: "Lidmaatschap", name: "membership", widget: "string" }
-      - label: "Specialisatie Items"
+      - label: "Specialisaties"
         name: "specializationItems"
         widget: "list"
         fields:
@@ -167,10 +174,10 @@ collections:
           widget: "string",
           required: false,
         }
-      - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "benefits"
     label: "Voordelen"
+    description: "Voordelen van massagetherapie"
     folder: "src/content/benefits"
     create: true
     fields:
@@ -178,10 +185,10 @@ collections:
       - { label: "Beschrijving", name: "description", widget: "text" }
       - { label: "Icoon", name: "icon", widget: "string" }
       - { label: "Volgorde", name: "order", widget: "number", default: 0 }
-      - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "navigation"
-    label: "Navigatie"
+    label: "Navigatie Menu"
+    description: "Menu items in de navigatiebalk"
     folder: "src/content/navigation"
     create: true
     fields:
@@ -194,4 +201,3 @@ collections:
           default: false,
         }
       - { label: "Volgorde", name: "order", widget: "number", default: 0 }
-      - { label: "Body", name: "body", widget: "markdown" }

@@ -3,27 +3,45 @@ import { glob } from "astro/loaders";
 
 const siteSettings = defineCollection({
   loader: glob({ base: "./src/content/site-settings", pattern: "**/*.md" }),
+  schema: z.object({
+    siteTitle: z.string(),
+    siteDescription: z.string(),
+    businessName: z.string(),
+    tagline: z.string(),
+    linkedin: z.string().optional(),
+  }),
+});
+
+const heroContent = defineCollection({
+  loader: glob({ base: "./src/content/hero", pattern: "**/*.md" }),
   schema: ({ image }) =>
     z.object({
-      siteTitle: z.string(),
-      siteDescription: z.string(),
-      businessName: z.string(),
-      tagline: z.string(),
-      heroHeadline: z.string(),
-      heroDescription: z.string(),
-      heroImage: image().optional(),
-      phone: z.string(),
-      email: z.string(),
-      website: z.string(),
-      linkedin: z.string().optional(),
-      lastAppointmentNote: z.string().optional(),
-      emergencyNote: z.string().optional(),
-      stoelmassageTitle: z.string().optional(),
-      stoelmassageDescription: z.string().optional(),
-      stoelmassageWhatIs: z.string().optional(),
-      stoelmassageBenefits: z.string().optional(),
-      stoelmassagePracticalInfo: z.string().optional(),
+      headline: z.string(),
+      description: z.string(),
+      image: image().optional(),
     }),
+});
+
+const stoelmassageContent = defineCollection({
+  loader: glob({ base: "./src/content/stoelmassage", pattern: "**/*.md" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    whatIs: z.string(),
+    benefits: z.string(),
+    practicalInfo: z.string(),
+  }),
+});
+
+const contactInfo = defineCollection({
+  loader: glob({ base: "./src/content/contact", pattern: "**/*.md" }),
+  schema: z.object({
+    phone: z.string(),
+    email: z.string(),
+    website: z.string(),
+    lastAppointmentNote: z.string().optional(),
+    emergencyNote: z.string().optional(),
+  }),
 });
 
 const testimonials = defineCollection({
@@ -35,6 +53,7 @@ const testimonials = defineCollection({
     date: z.string(),
     rating: z.number().min(1).max(5),
     featured: z.boolean().default(false),
+    order: z.number().default(0),
   }),
 });
 
@@ -43,6 +62,7 @@ const aboutContent = defineCollection({
   schema: ({ image }) =>
     z.object({
       professionalName: z.string(),
+      professionalPhoto: image().optional(),
       journeyTitle: z.string(),
       journeyContent: z.string(),
       philosophyTitle: z.string(),
@@ -78,7 +98,6 @@ const aboutContent = defineCollection({
       ctaTitle: z.string().optional(),
       ctaDescription: z.string().optional(),
       ctaButtonText: z.string().optional(),
-      professionalPhoto: image().optional(),
     }),
 });
 
@@ -104,6 +123,9 @@ const navigation = defineCollection({
 
 export const collections = {
   siteSettings,
+  heroContent,
+  stoelmassageContent,
+  contactInfo,
   testimonials,
   aboutContent,
   benefits,
