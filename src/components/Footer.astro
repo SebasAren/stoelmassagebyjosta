@@ -4,6 +4,9 @@ const today = new Date();
 
 const siteSettings = await getCollection("siteSettings");
 const siteData = siteSettings[0]?.data;
+
+const contactInfo = await getCollection("contactInfo");
+const contactData = contactInfo[0]?.data;
 ---
 
 <footer>
@@ -21,10 +24,10 @@ const siteData = siteSettings[0]?.data;
 
       <div class="footer-section">
         <h4>Contactgegevens</h4>
-        <p><strong>Telefoon:</strong> {siteData?.phone || "(555) 123-4567"}</p>
+        <p><strong>Telefoon:</strong> {contactData?.phone || "(555) 123-4567"}</p>
         <p>
           <strong>E-mail:</strong>
-          {siteData?.email || "info@jostamassage.com"}
+          {contactData?.email || "info@jostamassage.com"}
         </p>
       </div>
     </div>
