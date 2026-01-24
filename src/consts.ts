@@ -1,16 +1,16 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = "Josta Raapis Dingman Massages";
+export const SITE_TITLE = "Stoelmassage by Josta";
 export const SITE_DESCRIPTION =
-  "Professionele massagetherapie diensten die ontspanning, pijnverlichting en wellness bieden via Zweedse, deep tissue, hot stone en gespecialiseerde massagebehandelingen.";
+  "Professionele stoelmassage diensten die effectieve verlichting bieden van nek-, schouder- en rugklachten in slechts 20-30 minuten.";
 
 // Contact Information
 export const CONTACT_INFO = {
   phone: "(555) 123-4567",
-  email: "info@jostamassage.com",
+  email: "info@stoelmassagebyjosta.nl",
   address: "123 Wellness Street, Relaxation City, RC 12345",
-  website: "www.jostamassage.com",
+  website: "www.stoelmassagebyjosta.nl",
 };
 
 // Business Hours
@@ -22,7 +22,7 @@ export const BUSINESS_HOURS = {
 
 // Social Media Links
 export const SOCIAL_LINKS = {
-  facebook: "https://facebook.com/jostamassage",
-  instagram: "https://instagram.com/jostamassage",
-  yelp: "https://yelp.com/biz/jostamassage",
+  facebook: "https://facebook.com/stoelmassagebyjosta",
+  instagram: "https://instagram.com/stoelmassagebyjosta",
+  yelp: "https://yelp.com/biz/stoelmassagebyjosta",
 };
