@@ -2,16 +2,28 @@
 
 Welkom bij de website beheergids voor Stoelmassage by Josta. Dit document legt uit hoe u het Decap CMS beheerderspaneel kunt gebruiken om uw website-inhoud bij te werken en te beheren.
 
+## 🆕 Recente Verbeteringen
+
+Het CMS is onlangs verbeterd met:
+
+- **Verbeterde gebruikersinterface**: Emoji-iconen en Nederlandse labels voor betere herkenbaarheid
+- **Helpzame hints**: Elk veld heeft nu duidelijke instructies en format hints
+- **Nieuw adresveld**: Toegevoegd aan contactgegevens voor betere lokale SEO
+- **Directe documentatie link**: Snelle toegang tot hulp vanuit het admin scherm
+- **Betere media organisatie**: Verbeterde afbeeldingsupload en opslag
+- **Statusindicatie**: Duidelijke feedback tijdens laden en publiceren
+
 ## Inhoudsopgave
 
-1. [Toegang tot het Beheerderspaneel](#toegang-tot-het-beheerderspaneel)
-2. [Overzicht van het Beheerderspaneel](#overzicht-van-het-beheerderspaneel)
-3. [Website-inhoud Bewerken](#website-inhoud-bewerken)
-4. [Nieuwe Inhoud Toevoegen](#nieuwe-inhoud-toevoegen)
-5. [Werken met Afbeeldingen](#werken-met-afbeeldingen)
-6. [Tips voor Inhoudsorganisatie](#tips-voor-inhoudsorganisatie)
-7. [Wijzigingen Publiceren](#wijzigingen-publiceren)
-8. [Problemen Oplossen](#problemen-oplossen)
+1. [Recente Verbeteringen](#🆕-recente-verbeteringen)
+2. [Toegang tot het Beheerderspaneel](#toegang-tot-het-beheerderspaneel)
+3. [Overzicht van het Beheerderspaneel](#overzicht-van-het-beheerderspaneel)
+4. [Website-inhoud Bewerken](#website-inhoud-bewerken)
+5. [Nieuwe Inhoud Toevoegen](#nieuwe-inhoud-toevoegen)
+6. [Werken met Afbeeldingen](#werken-met-afbeeldingen)
+7. [Tips voor Inhoudsorganisatie](#tips-voor-inhoudsorganisatie)
+8. [Wijzigingen Publiceren](#wijzigingen-publiceren)
+9. [Problemen Oplossen](#problemen-oplossen)
 
 ## Toegang tot het Beheerderspaneel
 
@@ -23,18 +35,30 @@ Welkom bij de website beheergids voor Stoelmassage by Josta. Dit document legt u
 - U heeft toegang nodig tot de GitHub-repository: `SebasAren/raapisdingman`
 - Neem contact op met de websitebeheerder als u toegang nodig heeft
 
+**Nieuwe functies:**
+
+- Verbeterde laadpagina met duidelijke statusindicatie
+- Directe link naar documentatie vanaf het admin scherm
+- Betere foutafhandeling en gebruikersfeedback
+
 ## Overzicht van het Beheerderspaneel
 
 Het Decap CMS-beheerderspaneel heeft een linkernavigatiebalk met alle inhoudsverzamelingen:
 
-- **Website** - Basiswebsite-instellingen
-- **Hero Sectie** - Homepage hero-sectie
-- **Stoelmassage Sectie** - Stoelmassage dienstinformatie
-- **Contactgegevens** - Contactinformatie
-- **Getuigenissen** - Klantreviews
-- **Over Mij Pagina** - Over mij pagina-inhoud
-- **Voordelen** - Voordelen van massagetherapie
-- **Navigatie Menu** - Navigatiemenu-items
+- **🏠 Website Instellingen** - Basiswebsite-instellingen
+- **🌟 Hero Sectie (Homepage)** - Homepage hero-sectie
+- **💺 Stoelmassage Dienst** - Stoelmassage dienstinformatie
+- **📞 Contactgegevens** - Contactinformatie
+- **🗣️ Getuigenissen** - Klantreviews
+- **👤 Over Mij Pagina** - Over mij pagina-inhoud
+- **⭐ Voordelen** - Voordelen van massagetherapie
+- **🧭 Navigatie Menu** - Navigatiemenu-items
+
+**Nieuwe functies:**
+
+- Verbeterde labels met emoji-iconen voor betere herkenbaarheid
+- Helpzame hints bij elk veld voor duidelijke instructies
+- Nederlandse interface voor gemakkelijk gebruik
 
 ## Website-inhoud Bewerken
 
@@ -83,17 +107,24 @@ Het Decap CMS-beheerderspaneel heeft een linkernavigatiebalk met alle inhoudsver
 - **Voordelen**: Lijst met voordelen (scheid met enters)
 - **Praktische Info**: Praktische informatie voor klanten
 
-### 4. Contactinformatie (Contactgegevens)
+### 4. Contactinformatie (📞 Contactgegevens)
 
 **Locatie:** Contactgegevens-verzameling
 
 **Velden:**
 
-- **Telefoon**: Uw contacttelefoonnummer
-- **E-mail**: Uw e-mailadres
-- **Website**: Uw website-URL
+- **Telefoonnummer**: Uw contacttelefoonnummer (format: +31 6 12345678 of 06 12345678)
+- **E-mailadres**: Uw professionele e-mailadres
+- **Website URL**: Volledige URL inclusief https://
+- **Adres**: Uw bedrijfsadres of servicegebieden
 - **Laatste Afspraak Notitie**: Optionele notitie over laatste afspraken
 - **Spoed Notitie**: Optionele spoedcontactinformatie
+
+**Nieuwe functies:**
+
+- Adresveld toegevoegd voor betere lokale SEO
+- Verbeterde URL-validatie voor website links
+- Duidelijke format hints bij elk veld
 
 ### 5. Over Mij Pagina (Over Mij Pagina)
 
@@ -204,6 +235,12 @@ Het Decap CMS-beheerderspaneel heeft een linkernavigatiebalk met alle inhoudsver
 - **Professionele foto's**: 800x800px, onder 300KB
 - Gebruik tools zoals TinyPNG om te comprimeren voordat u uploadt
 
+**Nieuwe functies:**
+
+- Verbeterde media folder structuur voor betere organisatie
+- Automatische afbeeldingsoptimalisatie bij upload
+- Betere foutmeldingen bij uploadproblemen
+
 ## Tips voor Inhoudsorganisatie
 
 ### Volgordesysteem:
@@ -267,21 +304,28 @@ Sommige tekstvelden ondersteunen markdown:
 
 ### Hulp Krijgen:
 
+- **Directe documentatie link**: Klik op de "📖 Bekijk de documentatie" link op het admin scherm voor directe hulp
 - Neem contact op met de websitebeheerder: [uw contactinformatie]
 - Decap CMS-documentatie: https://decapcms.org/docs/
 - GitHub-issues: https://github.com/SebasAren/raapisdingman/issues
 
+**Nieuwe functies:**
+
+- Directe toegang tot documentatie vanuit het admin paneel
+- Verbeterde foutmeldingen met specifieke oplossingen
+- Statusindicatie tijdens laden en publiceren
+
 ## Snelle Referentie Cheat Sheet
 
-| Taak                      | Locatie         | Belangrijke Velden            |
-| ------------------------- | --------------- | ----------------------------- |
-| Bedrijfsnaam bijwerken    | Website         | Bedrijfsnaam                  |
-| Hero-afbeelding wijzigen  | Hero Sectie     | Hero Afbeelding               |
-| Getuigenis toevoegen      | Getuigenissen   | Naam, Getuigenis, Beoordeling |
-| Telefoonnummer bijwerken  | Contactgegevens | Telefoon                      |
-| Nieuw voordeel toevoegen  | Voordelen       | Titel, Beschrijving, Icoon    |
-| Navigatie wijzigen        | Navigatie Menu  | Label, URL, Volgorde          |
-| Over mij-pagina bijwerken | Over Mij Pagina | Reis Inhoud, Filosofie Items  |
+| Taak                      | Locatie                 | Belangrijke Velden            |
+| ------------------------- | ----------------------- | ----------------------------- |
+| Bedrijfsnaam bijwerken    | 🏠 Website Instellingen | Bedrijfsnaam                  |
+| Hero-afbeelding wijzigen  | 🌟 Hero Sectie          | Hero Afbeelding               |
+| Getuigenis toevoegen      | 🗣️ Getuigenissen        | Naam, Getuigenis, Beoordeling |
+| Telefoonnummer bijwerken  | 📞 Contactgegevens      | Telefoonnummer, Adres         |
+| Nieuw voordeel toevoegen  | ⭐ Voordelen            | Titel, Beschrijving, Icoon    |
+| Navigatie wijzigen        | 🧭 Navigatie Menu       | Label, URL, Volgorde          |
+| Over mij-pagina bijwerken | 👤 Over Mij Pagina      | Reis Inhoud, Filosofie Items  |
 
 ## Belangrijke Opmerkingen
 
