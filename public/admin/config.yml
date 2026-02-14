@@ -1,141 +1,101 @@
 # yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+# 📝 Content Management Configuratie voor Stoelmassage by Josta
+# Dit bestand definieert welke content secties bewerkbaar zijn via het CMS
+
 backend:
   name: github
   repo: SebasAren/raapisdingman
   branch: main
   base_url: https://sveltia-cms-auth.sebastiaan-fe5.workers.dev
+
+# 📁 Media instellingen - waar afbeeldingen worden opgeslagen
 media_folder: "src/assets/images"
-public_folder: "src/assets/images"
+public_folder: "/src/assets/images"
+
+# 📚 Collecties - alle bewerkbare content secties
 collections:
   - name: "siteSettings"
-    label: "Website"
-    description: "Basis website instellingen en algemene informatie"
+    label: "🏠 Website Instellingen"
+    description: "Basis website instellingen en algemene bedrijfsinformatie die overal op de site wordt gebruikt"
     folder: "src/content/site-settings"
-    create: false
+    create: false  # Er kan maar één site instelling zijn
     fields:
-      - { label: "Site Titel", name: "siteTitle", widget: "string" }
-      - { label: "Site Beschrijving", name: "siteDescription", widget: "text" }
-      - { label: "Bedrijfsnaam", name: "businessName", widget: "string" }
-      - { label: "Slogan", name: "tagline", widget: "string" }
-      - {
-          label: "LinkedIn URL",
-          name: "linkedin",
-          widget: "string",
-          required: false,
-        }
+      - { label: "Site Titel", name: "siteTitle", widget: "string", hint: "De titel die in browser tabs en zoekresultaten verschijnt" }
+      - { label: "Site Beschrijving", name: "siteDescription", widget: "text", hint: "Korte beschrijving voor zoekmachines (max 160 tekens)" }
+      - { label: "Bedrijfsnaam", name: "businessName", widget: "string", hint: "Officiële naam van uw bedrijf" }
+      - { label: "Slogan/Tagline", name: "tagline", widget: "string", hint: "Korte, pakkende slogan voor uw bedrijf" }
+      - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false, hint: "Volledige URL naar uw LinkedIn profiel" }
 
   - name: "heroContent"
-    label: "Hero Sectie"
-    description: "Instellingen voor de bovenste hero sectie op de homepage"
+    label: "🌟 Hero Sectie (Homepage)"
+    description: "De grote introductie sectie bovenaan de homepage - dit is het eerste wat bezoekers zien"
     folder: "src/content/hero"
-    create: false
+    create: false  # Er kan maar één hero sectie zijn
     fields:
-      - { label: "Kop", name: "headline", widget: "string" }
-      - { label: "Beschrijving", name: "description", widget: "text" }
-      - {
-          label: "Hero Afbeelding",
-          name: "image",
-          widget: "image",
-          required: false,
-        }
+      - { label: "Hoofdtitel", name: "headline", widget: "string", hint: "De grote titel die bezoekers direct zien" }
+      - { label: "Beschrijving", name: "description", widget: "text", hint: "Korte introductietekst onder de titel (1-2 zinnen)" }
+      - { label: "Hero Afbeelding", name: "image", widget: "image", required: false, hint: "Grote achtergrondafbeelding (minimaal 1920x1080px aanbevolen)" }
 
   - name: "stoelmassageContent"
-    label: "Stoelmassage Sectie"
-    description: "Inhoud voor de stoelmassage dienst sectie op de homepage"
+    label: "💺 Stoelmassage Dienst"
+    description: "Alle informatie over uw stoelmassage diensten op de homepage"
     folder: "src/content/stoelmassage"
-    create: false
+    create: false  # Er kan maar één stoelmassage sectie zijn
     fields:
-      - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Beschrijving", name: "description", widget: "text" }
-      - {
-          label: "Wat is Stoelmassage? (Inhoud)",
-          name: "whatIs",
-          widget: "text",
-        }
-      - {
-          label: "Voordelen (Gebruik enter om te scheiden)",
-          name: "benefits",
-          widget: "text",
-        }
-      - { label: "Praktische Info", name: "practicalInfo", widget: "text" }
+      - { label: "Titel", name: "title", widget: "string", hint: "Hoofdtitel voor de stoelmassage sectie" }
+      - { label: "Beschrijving", name: "description", widget: "text", hint: "Korte algemene beschrijving van stoelmassage" }
+      - { label: "Wat is Stoelmassage?", name: "whatIs", widget: "text", hint: "Uitleg over wat stoelmassage precies inhoudt" }
+      - { label: "Voordelen", name: "benefits", widget: "text", hint: "Specifieke voordelen - gebruik enters om items te scheiden" }
+      - { label: "Praktische Informatie", name: "practicalInfo", widget: "text", hint: "Praktische details voor klanten (duur, locatie, etc.)" }
 
   - name: "contactInfo"
-    label: "Contactgegevens"
-    description: "Contact informatie en notities"
+    label: "📞 Contactgegevens"
+    description: "Alle contactinformatie voor klanten - wordt getoond in de footer en contact secties"
     folder: "src/content/contact"
-    create: false
+    create: false  # Er kan maar één contact sectie zijn
     fields:
-      - { label: "Telefoon", name: "phone", widget: "string" }
-      - { label: "E-mail", name: "email", widget: "string" }
-      - { label: "Website", name: "website", widget: "string" }
-      - {
-          label: "Laatste Afspraak Notitie",
-          name: "lastAppointmentNote",
-          widget: "text",
-          required: false,
-        }
-      - {
-          label: "Spoed Notitie",
-          name: "emergencyNote",
-          widget: "text",
-          required: false,
-        }
+      - { label: "Telefoonnummer", name: "phone", widget: "string", hint: "Format: +31 6 12345678 of 06 12345678" }
+      - { label: "E-mailadres", name: "email", widget: "string", hint: "Uw professionele e-mailadres" }
+      - { label: "Website URL", name: "website", widget: "string", hint: "Volledige URL inclusief https://" }
+      - { label: "Laatste Afspraak Notitie", name: "lastAppointmentNote", widget: "text", required: false, hint: "Speciale notitie over afspraakmogelijkheden" }
+      - { label: "Spoed Notitie", name: "emergencyNote", widget: "text", required: false, hint: "Informatie voor spoedafspraken of speciale gevallen" }
 
   - name: "testimonials"
-    label: "Getuigenissen"
-    description: "Klant reviews en ervaringen"
+    label: "🗣️ Getuigenissen"
+    description: "Klantreviews en ervaringen - help potentiële klanten overtuigen van uw kwaliteit"
     folder: "src/content/testimonials"
-    create: true
+    create: true  # Nieuwe getuigenissen kunnen worden toegevoegd
     fields:
-      - { label: "Naam", name: "name", widget: "string" }
-      - { label: "Getuigenis", name: "text", widget: "text" }
-      - { label: "Behandeling", name: "service", widget: "string" }
-      - { label: "Datum", name: "date", widget: "string" }
-      - {
-          label: "Beoordeling",
-          name: "rating",
-          widget: "number",
-          min: 1,
-          max: 5,
-          default: 5,
-        }
-      - {
-          label: "Uitgelicht",
-          name: "featured",
-          widget: "boolean",
-          default: false,
-        }
-      - { label: "Volgorde", name: "order", widget: "number", default: 0 }
+      - { label: "Naam van klant", name: "name", widget: "string", hint: "Volledige naam of initialen" }
+      - { label: "Getuigenis tekst", name: "text", widget: "text", hint: "De review of ervaring van de klant" }
+      - { label: "Behandeling", name: "service", widget: "string", hint: "Welke behandeling de klant heeft gehad" }
+      - { label: "Datum", name: "date", widget: "string", hint: "Datum van de review (bijv. 'Januari 2024')" }
+      - { label: "Beoordeling (sterren)", name: "rating", widget: "number", min: 1, max: 5, default: 5, hint: "1-5 sterren beoordeling" }
+      - { label: "Uitgelicht", name: "featured", widget: "boolean", default: false, hint: "Toon deze review prominent op de homepage" }
+      - { label: "Volgorde", name: "order", widget: "number", default: 0, hint: "Bepaalt de volgorde van weergave (laagste eerst)" }
 
   - name: "aboutContent"
-    label: "Over Mij Pagina"
-    description: "Inhoud voor de over mij pagina"
+    label: "👤 Over Mij Pagina"
+    description: "Uw professionele profiel, achtergrond en kwalificaties voor de 'Over Mij' pagina"
     folder: "src/content/about"
-    create: false
+    create: false  # Er kan maar één 'Over Mij' pagina zijn
     fields:
-      - {
-          label: "Professionele Naam",
-          name: "professionalName",
-          widget: "string",
-        }
-      - {
-          label: "Professionele Foto",
-          name: "professionalPhoto",
-          widget: "image",
-          required: false,
-        }
-      - { label: "Reis Titel", name: "journeyTitle", widget: "string" }
-      - { label: "Reis Inhoud", name: "journeyContent", widget: "markdown" }
-      - { label: "Filosofie Titel", name: "philosophyTitle", widget: "string" }
+      - { label: "Professionele Naam", name: "professionalName", widget: "string", hint: "Uw volledige naam zoals u genoemd wilt worden" }
+      - { label: "Professionele Foto", name: "professionalPhoto", widget: "image", required: false, hint: "Professionele foto (vierkant of portrait formaat)" }
+      - { label: "Reis Titel", name: "journeyTitle", widget: "string", hint: "Titel voor uw professionele verhaal" }
+      - { label: "Reis Inhoud", name: "journeyContent", widget: "markdown", hint: "Uw professionele verhaal en achtergrond" }
+      - { label: "Filosofie Titel", name: "philosophyTitle", widget: "string", hint: "Titel voor uw werkfilosofie" }
       - label: "Filosofie Items"
         name: "philosophyItems"
         widget: "list"
+        hint: "Individuele punten van uw werkfilosofie"
         fields:
           - { label: "Titel", name: "title", widget: "string" }
           - { label: "Beschrijving", name: "description", widget: "text" }
       - label: "Opleiding"
         name: "educationItems"
         widget: "list"
+        hint: "Uw professionele opleidingen en diploma's"
         fields:
           - { label: "Diploma", name: "degree", widget: "string" }
           - { label: "Instituut", name: "institution", widget: "string" }
@@ -143,61 +103,44 @@ collections:
       - label: "Certificeringen"
         name: "certificationItems"
         widget: "list"
+        hint: "Extra certificeringen en cursussen"
         fields:
           - { label: "Certificering", name: "certification", widget: "string" }
       - label: "Lidmaatschappen"
         name: "membershipItems"
         widget: "list"
+        hint: "Professionele lidmaatschappen en associaties"
         fields:
           - { label: "Lidmaatschap", name: "membership", widget: "string" }
       - label: "Specialisaties"
         name: "specializationItems"
         widget: "list"
+        hint: "Waar u zich in gespecialiseerd heeft"
         fields:
           - { label: "Titel", name: "title", widget: "string" }
           - { label: "Beschrijving", name: "description", widget: "text" }
-      - {
-          label: "CTA Titel",
-          name: "ctaTitle",
-          widget: "string",
-          required: false,
-        }
-      - {
-          label: "CTA Beschrijving",
-          name: "ctaDescription",
-          widget: "text",
-          required: false,
-        }
-      - {
-          label: "CTA Knop Tekst",
-          name: "ctaButtonText",
-          widget: "string",
-          required: false,
-        }
+      - { label: "CTA Titel", name: "ctaTitle", widget: "string", required: false, hint: "Titel voor de call-to-action sectie" }
+      - { label: "CTA Beschrijving", name: "ctaDescription", widget: "text", required: false, hint: "Beschrijving voor de call-to-action" }
+      - { label: "CTA Knop Tekst", name: "ctaButtonText", widget: "string", required: false, hint: "Tekst voor de call-to-action knop" }
 
   - name: "benefits"
-    label: "Voordelen"
-    description: "Voordelen van massagetherapie"
+    label: "⭐ Voordelen"
+    description: "Individuele voordelen van massagetherapie - worden getoond als icons op de website"
     folder: "src/content/benefits"
-    create: true
+    create: true  # Nieuwe voordelen kunnen worden toegevoegd
     fields:
-      - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Beschrijving", name: "description", widget: "text" }
-      - { label: "Icoon", name: "icon", widget: "string" }
-      - { label: "Volgorde", name: "order", widget: "number", default: 0 }
+      - { label: "Titel", name: "title", widget: "string", hint: "Korte titel van het voordeel (bijv. 'Stressvermindering')" }
+      - { label: "Beschrijving", name: "description", widget: "text", hint: "Korte beschrijving van dit specifieke voordeel" }
+      - { label: "Icoon naam", name: "icon", widget: "string", hint: "Naam van het icoon (bijv. 'heart', 'leaf', 'star')" }
+      - { label: "Volgorde", name: "order", widget: "number", default: 0, hint: "Bepaalt de volgorde van weergave" }
 
   - name: "navigation"
-    label: "Navigatie Menu"
-    description: "Menu items in de navigatiebalk"
+    label: "🧭 Navigatie Menu"
+    description: "Menu items in de navigatiebalk bovenaan de website"
     folder: "src/content/navigation"
-    create: true
+    create: true  # Nieuwe menu items kunnen worden toegevoegd
     fields:
-      - { label: "Label", name: "label", widget: "string" }
-      - { label: "URL", name: "url", widget: "string" }
-      - {
-          label: "Is Knop",
-          name: "isButton",
-          widget: "boolean",
-          default: false,
-        }
-      - { label: "Volgorde", name: "order", widget: "number", default: 0 }
+      - { label: "Label", name: "label", widget: "string", hint: "De tekst die in het menu getoond wordt" }
+      - { label: "URL", name: "url", widget: "string", hint: "Waar de link naartoe gaat (bijv. /over-mij of https://...)" }
+      - { label: "Is Knop", name: "isButton", widget: "boolean", default: false, hint: "Of dit item als knop getoond moet worden" }
+      - { label: "Volgorde", name: "order", widget: "number", default: 0, hint: "Bepaalt de positie in het menu (laagste eerst)" }
