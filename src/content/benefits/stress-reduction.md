@@ -1,7 +1,6 @@
 ---
 title: "🌿 Stress Reduction"
 description: "Lower cortisol levels and promote deep relaxation to combat daily stressors."
-icon: "🌿"
 order: 1
 ---
 

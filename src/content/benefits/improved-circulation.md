@@ -1,7 +1,6 @@
 ---
 title: "🔄 Improved Circulation"
 description: "Enhance blood flow to deliver oxygen and nutrients throughout your body."
-icon: "🔄"
 order: 3
 ---
 

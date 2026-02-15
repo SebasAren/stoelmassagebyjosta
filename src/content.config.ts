@@ -39,8 +39,7 @@ const contactInfo = defineCollection({
     phone: z.string(),
     email: z.string(),
     website: z.string(),
-    lastAppointmentNote: z.string().optional(),
-    emergencyNote: z.string().optional(),
+    address: z.string(),
   }),
 });
 
@@ -65,13 +64,6 @@ const aboutContent = defineCollection({
       professionalPhoto: image().optional(),
       journeyTitle: z.string(),
       journeyContent: z.string(),
-      philosophyTitle: z.string(),
-      philosophyItems: z.array(
-        z.object({
-          title: z.string(),
-          description: z.string(),
-        }),
-      ),
       educationItems: z.array(
         z.object({
           degree: z.string(),
@@ -82,17 +74,6 @@ const aboutContent = defineCollection({
       certificationItems: z.array(
         z.object({
           certification: z.string(),
-        }),
-      ),
-      membershipItems: z.array(
-        z.object({
-          membership: z.string(),
-        }),
-      ),
-      specializationItems: z.array(
-        z.object({
-          title: z.string(),
-          description: z.string(),
         }),
       ),
       ctaTitle: z.string().optional(),
@@ -106,7 +87,6 @@ const benefits = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    icon: z.string(),
     order: z.number().default(0),
   }),
 });
@@ -121,15 +101,6 @@ const navigation = defineCollection({
   }),
 });
 
-const blog = defineCollection({
-  loader: glob({ base: "./src/content/blog", pattern: "**/*.md" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.date(),
-  }),
-});
-
 export const collections = {
   siteSettings,
   heroContent,
@@ -139,5 +110,4 @@ export const collections = {
   aboutContent,
   benefits,
   navigation,
-  blog,
 };

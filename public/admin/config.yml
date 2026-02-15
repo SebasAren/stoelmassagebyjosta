@@ -57,8 +57,7 @@ collections:
       - { label: "Telefoonnummer", name: "phone", widget: "string", hint: "Format: +31 6 12345678 of 06 12345678" }
       - { label: "E-mailadres", name: "email", widget: "string", hint: "Uw professionele e-mailadres" }
       - { label: "Website URL", name: "website", widget: "string", hint: "Volledige URL inclusief https://" }
-      - { label: "Laatste Afspraak Notitie", name: "lastAppointmentNote", widget: "text", required: false, hint: "Speciale notitie over afspraakmogelijkheden" }
-      - { label: "Spoed Notitie", name: "emergencyNote", widget: "text", required: false, hint: "Informatie voor spoedafspraken of speciale gevallen" }
+      - { label: "Adres", name: "address", widget: "string", hint: "Uw bedrijfsadres of servicegebied" }
 
   - name: "testimonials"
     label: "🗣️ Getuigenissen"
@@ -84,14 +83,6 @@ collections:
       - { label: "Professionele Foto", name: "professionalPhoto", widget: "image", required: false, hint: "Professionele foto (vierkant of portrait formaat)" }
       - { label: "Reis Titel", name: "journeyTitle", widget: "string", hint: "Titel voor uw professionele verhaal" }
       - { label: "Reis Inhoud", name: "journeyContent", widget: "markdown", hint: "Uw professionele verhaal en achtergrond" }
-      - { label: "Filosofie Titel", name: "philosophyTitle", widget: "string", hint: "Titel voor uw werkfilosofie" }
-      - label: "Filosofie Items"
-        name: "philosophyItems"
-        widget: "list"
-        hint: "Individuele punten van uw werkfilosofie"
-        fields:
-          - { label: "Titel", name: "title", widget: "string" }
-          - { label: "Beschrijving", name: "description", widget: "text" }
       - label: "Opleiding"
         name: "educationItems"
         widget: "list"
@@ -106,19 +97,6 @@ collections:
         hint: "Extra certificeringen en cursussen"
         fields:
           - { label: "Certificering", name: "certification", widget: "string" }
-      - label: "Lidmaatschappen"
-        name: "membershipItems"
-        widget: "list"
-        hint: "Professionele lidmaatschappen en associaties"
-        fields:
-          - { label: "Lidmaatschap", name: "membership", widget: "string" }
-      - label: "Specialisaties"
-        name: "specializationItems"
-        widget: "list"
-        hint: "Waar u zich in gespecialiseerd heeft"
-        fields:
-          - { label: "Titel", name: "title", widget: "string" }
-          - { label: "Beschrijving", name: "description", widget: "text" }
       - { label: "CTA Titel", name: "ctaTitle", widget: "string", required: false, hint: "Titel voor de call-to-action sectie" }
       - { label: "CTA Beschrijving", name: "ctaDescription", widget: "text", required: false, hint: "Beschrijving voor de call-to-action" }
       - { label: "CTA Knop Tekst", name: "ctaButtonText", widget: "string", required: false, hint: "Tekst voor de call-to-action knop" }
@@ -131,7 +109,6 @@ collections:
     fields:
       - { label: "Titel", name: "title", widget: "string", hint: "Korte titel van het voordeel (bijv. 'Stressvermindering')" }
       - { label: "Beschrijving", name: "description", widget: "text", hint: "Korte beschrijving van dit specifieke voordeel" }
-      - { label: "Icoon naam", name: "icon", widget: "string", hint: "Naam van het icoon (bijv. 'heart', 'leaf', 'star')" }
       - { label: "Volgorde", name: "order", widget: "number", default: 0, hint: "Bepaalt de volgorde van weergave" }
 
   - name: "navigation"

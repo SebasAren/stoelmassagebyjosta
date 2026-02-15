@@ -1,7 +1,6 @@
 ---
 title: "💪 Pain Relief"
 description: "Alleviate chronic pain, muscle tension, and discomfort through targeted techniques."
-icon: "💪"
 order: 2
 ---
 
