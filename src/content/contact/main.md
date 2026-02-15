@@ -1,5 +1,5 @@
 ---
-phone: (555) 123-4567
+phone: (555) 123-4568
 email: info@stoelmassagebyjosta.nl
 website: https://www.stoelmassagebyjosta.nl
 lastAppointmentNote: Last appointment taken 1 hour before closing
