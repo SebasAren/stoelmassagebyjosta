@@ -1,6 +1,6 @@
 ---
-title: "🌿 Stress Reduction"
-description: "Lower cortisol levels and promote deep relaxation to combat daily stressors."
+title: 🌿 Stress vermindering
+description: Lagere cortisol levels en diepe ontspanning om dagelijkse stress aan te kunnen.
 order: 1
 ---
 
