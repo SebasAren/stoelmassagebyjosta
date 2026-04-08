@@ -1,6 +1,6 @@
 ---
-title: "💪 Pain Relief"
-description: "Alleviate chronic pain, muscle tension, and discomfort through targeted techniques."
+title: 💪 pijn vermindering
+description: vermindering van pijn, gespannen spieren en fysiek ongemak door doelgerichte technieken.
 order: 2
 ---
 
