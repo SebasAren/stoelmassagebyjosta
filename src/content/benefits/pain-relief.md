@@ -1,5 +1,5 @@
 ---
-title: 💪 pijn vermindering
+title: 💪 Pijn vermindering
 description: vermindering van pijn, gespannen spieren en fysiek ongemak door doelgerichte technieken.
 order: 2
 ---
