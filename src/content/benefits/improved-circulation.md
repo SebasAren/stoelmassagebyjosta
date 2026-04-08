@@ -1,6 +1,6 @@
 ---
-title: "🔄 Improved Circulation"
-description: "Enhance blood flow to deliver oxygen and nutrients throughout your body."
+title: 🔄 Verbeterde bloedcirculatie
+description: Verbeter de doorbloeding voor een snellere aanvoer van zuurstof en voedingstoffen en een efficiëntere afvoer van afvalstoffen.
 order: 3
 ---
 
