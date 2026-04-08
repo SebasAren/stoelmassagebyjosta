@@ -1,23 +1,17 @@
 ---
 professionalName: Josta Raapis Dingman
-professionalPhoto: ""
+professionalPhoto: ''
 journeyTitle: Massagetherapie
-journeyContent: Hier komt een uitgebreide tekst
+journeyContent: Mijn naam is Josta Raapis Dingman. Ik heb in 2006 mijn opleiding tot Massagetherapeut afgerond. Een van mijn specialisaties is stoelmassage. Stoelmassage is van groot belang voor zowel fysieke als mentale gezondheid, omdat een groot deel van de dag zittend wordt doorgebracht. De gezondheid van het personeel heeft direct invloed op de bedrijfsresultaten. Ontspannen medewerkers werken met meer plezier en kunnen zich beter en langer concentreren. Door mijn jarenlange ervaring ben ik erachter gekomen dat stoelmassage een onmisbare investering is in de gezondheid en productiviteit van de werknemer.
 educationItems:
-  - degree: Massage Therapy Diploma
-    institution: Wellness Institute
-    year: "2008"
-  - degree: Advanced Anatomy & Physiology
-    institution: Health Sciences College
-    year: "2010"
-  - degree: Bachelor of Science in Kinesiology
-    institution: State University
-    year: "2006"
+  - degree: Massage Therapeut Diploma
+    institution: Leffelaar Opleidingen
+    year: '2006'
 certificationItems:
-  - certification: test
-ctaTitle: Klaar om het Verschil te Ervaren?
-ctaDescription: Ik ben toegewijd aan het bieden van uitzonderlijke zorg in een comfortabele, professionele omgeving. Laten we samenwerken om uw doelen te bereiken.
-ctaButtonText: Plan Uw Consultatie
+  - certification: Stoelmassage
+ctaTitle: Behoefte aan meer informatie?
+ctaDescription: Ik denk graag met u mee over de meerwaarde van stoelmassage voor uw bedrijf en werknemers.
+ctaButtonText: Neem vrijblijvend contact met mij op om de mogelijkheden te bespreken.
 ---
 
 # About Josta Raapis Dingman
