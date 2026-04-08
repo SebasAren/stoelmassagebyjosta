@@ -1,6 +1,6 @@
 ---
 phone: +31 610628939
-email: info@stoelmassagebyjosta.nl
+email: jraapisdingman@gmail.com
 website: https://www.stoelmassagebyjosta.nl
 address: Amsterdam en Amstelveen
 ---
