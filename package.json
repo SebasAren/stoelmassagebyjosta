@@ -2,6 +2,7 @@
   "name": "stoelmassagebyjosta",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@11.12.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -25,5 +26,8 @@
   },
   "lint-staged": {
     "*.{js,ts,md,mdx,astro,css,mjs}": "prettier --write"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["sharp", "esbuild"]
   }
 }
